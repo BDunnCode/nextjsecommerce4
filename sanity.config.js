@@ -1,5 +1,6 @@
 import { defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
+import schemas from "./app/sanity/schemas";
 
 const sanityConfig = defineConfig({
   projectId: 'os6mngvt',
@@ -9,7 +10,8 @@ const sanityConfig = defineConfig({
   useCdn: true,
   plugins: [
     structureTool()
-  ]
+  ],
+  schema:{types:schemas},
 })
 
 export default sanityConfig 
