@@ -1,4 +1,5 @@
 import Card from "./components/Card";
+import Footer from "./components/Footer";
 import Header from "./components/Header";
 
 export function page() {
@@ -10,9 +11,18 @@ export function page() {
         <p className="text-gray-500 text-xl">Elevate your space with stunning art prints, Transform your surroundings with captivating visuals.</p>
       </div>
 
-      <div className="p-10">
-        <Card />
+      <div className="flex p-10">
+        <div className="mx-auto grid grid-cols-1 lg:grid-cols-3 gap-16">
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+        </div>
       </div>
+
+      <Footer />
     </div>
   );
 }
