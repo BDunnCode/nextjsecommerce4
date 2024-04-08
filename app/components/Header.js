@@ -4,6 +4,7 @@ import Image from "next/image";
 
 import { FaShoppingCart } from "react-icons/fa";
 import { FaTruck } from "react-icons/fa";
+import { UserButton } from "@clerk/nextjs";
 
 function Header() {
   return (
@@ -24,7 +25,9 @@ function Header() {
             1
           </div>
           {/* <FaTruck className="text-3xl text-[#5B20B6] cursor-pointer" /> */}
-          {/* <p>usericon</p> */}
+          <div className="ml-4">
+            <UserButton afterSignOutUrl="/" />
+          </div>
         </div>
       </div>
     </div>
