@@ -12,9 +12,9 @@ export default async function Home() {
 
   const existingUser = await getUsersByEmail(user?.emailAddresses[0]?.emailAddress);
 
-  if(!existingUser?.length) {
+  if(existingUser.length === 0) {
     await createUser({
-      name:user?.fullName,
+      name:user?.firstName,
       email:user?.emailAddresses[0]?.emailAddress
     })
   }

@@ -21,7 +21,14 @@ export async function getUsersByEmail(email) {
 }
 
 export async function createUser(userData) {
+  console.log("creating user", userData);
   const {name, email} = userData;
+
+  const existingUser = await getUsersByEmail(email);
+
+  if (existingUser.length > 0) {
+    throw new Error("User with this email already exists");
+  }
 
   const newUser = await client.create({
     _type:"user",
