@@ -1,16 +1,27 @@
+"use client";
 import Image from "next/image";
+import { useState } from "react";
+import useCartStore from "../cartStore";
 
 const Details = ({product}) => {
+  const cart = useCartStore(state => state.cart);
+  const addToCart = useCartStore(state => state.addToCart);
+  const [ quantity, setQuantity ] = useState(1);
+  console.log(cart)
+
+  const handleAddToCart = () => {
+    addToCart({product, quantity:quantity})
+  }
+
   return (
     <div className="max-w-6xl mx-auto mt-20">
       <div className="grid grid-cols-1 lg:grid-cols-2">
-        
-        <div classname="relative h-96 aspect-ratio-1 overflow-hidden shadow-md">
+        <div className="relative h-96 aspect-ratio-1 overflow-hidden shadow-md">
           <Image 
             src={product?.image}
             alt="art"
-            height={150}
-            width={300}
+            objectFit="cover"
+            layout="fill"
           />
         </div>
 
@@ -23,16 +34,26 @@ const Details = ({product}) => {
           </div>
 
           <div className="mt-6 flex flex-col text-gray">
-            <label htmlFor="">Qty</label>
-            <input type="text" defaultValue={1} className="w-20 px-4 h-10 border
-            border-gray-300 rounded-md"/>
+            <label htmlFor="">
+              Qty
+            </label>
+            <input 
+              value={quantity} 
+              onChange={(e)=>{setQuantity(e.target.value)}}
+              type="number" 
+              className="w-20 px-4 h-10 borderborder-gray-300 rounded-md" 
+            />
           </div>
 
           <div className="mt-6">
-            <button className="bg-[#5B20B6] text-white py-3 px-6 rounded-md">Add to Cart</button>
+            <button 
+              className="bg-[#5B20B6] text-white py-3 px-6 rounded-md"
+              onClick={handleAddToCart}
+            >
+              Add to Cart
+            </button>
           </div>
         </div>
-
       </div>
     </div>
   )
