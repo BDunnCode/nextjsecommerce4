@@ -7,7 +7,21 @@ const client = createClient({
   apiVersion: "2024-04-08",
   useCdn: true,
   token: process.env.NEXT_PUBLIC_SANITY_API_TOKEN,
-})
+});
+
+export async function getProducts() {
+  return client.fetch(
+    groq`*[_type == "product"]{
+      _id,
+      createdAt,
+      name,
+      description,
+      price,
+      "image": image.asset->url,
+      "slug": slug.current
+    }`
+  )
+};
 
 export async function getUsersByEmail(email) {
   return client.fetch(groq`*[_type == "user" && email == $email]{
@@ -18,7 +32,7 @@ export async function getUsersByEmail(email) {
   }`,
   {email}
   );
-}
+};
 
 export async function createUser(userData) {
   console.log("creating user", userData);
@@ -37,4 +51,4 @@ export async function createUser(userData) {
     createdAt:new Date().toISOString(),
   })
   return newUser;
-}
+};
