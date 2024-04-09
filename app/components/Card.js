@@ -1,15 +1,18 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const Card = ({ product }) => {
   return (
     <div className="relative shadow-md max-w-sm cursor-pointer">
       <div className="relative h-96 overflow-hidden aspect-ratio-1 hover:scale-105 transition-transform duration-300">
-        <Image
-          src={product?.image}
-          layout="fill"
-          alt="art"
-          objectFit="cover"
-        />
+        <Link href={`/details/${product?.slug}`}>
+          <Image
+            src={product?.image}
+            layout="fill"
+            alt="art"
+            objectFit="cover"
+          />
+        </Link>
       </div>
 
       <div className="p-4 space-y-2">
