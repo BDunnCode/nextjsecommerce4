@@ -1,13 +1,16 @@
+"use client";
 import Image from "next/image";
 import { FaTrash } from "react-icons/fa";
+import useCartStore from './../cartStore';
 
 const Cart = () => {
-  const products = [
-    {id:1, name:'Painting 1', price:100, qty:2},
-    {id:1, name:'Painting 2', price:200, qty:1},
-  ]
-  
-  
+  const cart = useCartStore(state => state.cart);
+  const removeFromCart = useCartStore(state => state.removeFromCart);
+
+  const handleRemoveFromCart = (productId) => {
+    removeFromCart(productId)
+  }
+ 
   return (
     <div className="max-w-3xl mx-auto mt-20">
       <h1 className="text-3xl text-center font-semibold text-[#5B20B6] mb-6">Cart</h1>
@@ -24,7 +27,7 @@ const Cart = () => {
 
         <tbody>
           {
-              products.map(product => (
+              cart.map(product => (
                 <tr className="hover:bg-gray-50 text-center border-b text-[#5B20B6] border-gray-300" key={product.id}>
                   <td className="flex items-center py-2 px-4">
                     <Image 
@@ -37,16 +40,15 @@ const Cart = () => {
                     {product.name}
                   </td>
                   <td className="py-2 px-4">${product.price}</td>
-                  <td className="py-2 px-4">{product.qty}</td>
+                  <td className="py-2 px-4">{product.quantity}</td>
                   <td className="py-2 px-4">
-                    <FaTrash className="mx-auto cursor-pointer" />
+                    <FaTrash onClick={() => handleRemoveFromCart(product?._id)} className="mx-auto cursor-pointer" />
                   </td>
                 </tr>
               ))
           }
         </tbody>
       </table>
-
     </div>
   )
 }
