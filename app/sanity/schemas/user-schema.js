@@ -13,7 +13,7 @@ const user = {
       name:"email",
       title:"Email",
       type:"string",
-      validation:Rule => Rule.required()
+      validation:Rule => Rule.required().unique()
     },
     {
       name:"createdAt",

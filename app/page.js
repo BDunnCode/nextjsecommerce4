@@ -1,8 +1,24 @@
+
 import Card from "./components/Card";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import { getUsersByEmail, createUser } from "./sanity/sanity-utils";
+import { currentUser } from "@clerk/nextjs";
 
-export function page() {
+export default async function Home() {
+  const user = await currentUser();
+
+  if (!user) return <div>User is not logged in.</div>
+
+  const existingUser = await getUsersByEmail(user?.emailAddresses[0]?.emailAddress);
+
+  if(!existingUser?.length) {
+    await createUser({
+      name:user?.fullName,
+      email:user?.emailAddresses[0]?.emailAddress
+    })
+  }
+
   return (
     <div>
       <Header />
@@ -27,4 +43,3 @@ export function page() {
   );
 }
 
-export default page;
