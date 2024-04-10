@@ -38,6 +38,59 @@ export async function getProducts() {
   )
 };
 
+export async function getOrdersByEmail(email) {
+  try {
+    const orders = await client.fetch(
+      `*[_type == 'order' && email == $email | order(createdAt desc)`,
+      { email }
+    );
+
+    return orders;
+  } catch (error) {
+    console.error('Error getting orders:', error.message);
+    throw new Error('Failed to get orders');
+  }
+}
+
+export async function createOrder(email,cart) {
+  console.log(email,cart);
+  try {
+    // Create an array to store the promises for creating each order
+    const orderCreationPromises = [];
+
+    // Iterate over the orderDataArray and create a promise for each order
+    cart.forEach((orderData) => {
+      // Extract order data
+      const { name, quantity, price} = orderData;
+
+      // Create a promise for creating each order
+      const orderCreationPromise = client.create({
+        _type: 'order',
+        name,
+        qty: quantity,
+        price,
+        paid: true,
+        delivered: false,
+        email: email,
+        createdAt: new Date().toISOString(),
+      });
+
+      // Add the promise to the array
+      orderCreationPromises.push(orderCreationPromise);
+    });
+
+    // Wait for all order creation promises to resolve
+    const createdOrders = await Promise.all(orderCreationPromises);
+
+    // Return the created orders
+    return createdOrders;
+  } catch (error) {
+    // Handle errors appropriately
+    console.error('Error creating order:', error.message);
+    throw new Error('Failed to create order');
+  }
+}
+
 export async function getUsersByEmail(email) {
   return client.fetch(groq`*[_type == "user" && email == $email]{
     _id,
