@@ -36,7 +36,9 @@ function Header() {
                 </div>   
               )        
             }
-          {/* <FaTruck className="text-3xl text-[#5B20B6] cursor-pointer" /> */}
+          <Link href="/order">
+            <FaTruck className="text-3xl text-[#5B20B6] cursor-pointer ml-4" />
+          </Link>
           <div className="ml-4">
             <UserButton afterSignOutUrl="/" />
           </div>
