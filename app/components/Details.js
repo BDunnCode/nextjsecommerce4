@@ -15,7 +15,7 @@ const Details = ({product}) => {
 
   return (
     <div className="max-w-6xl mx-auto mt-20">
-      <div className="grid grid-cols-1 lg:grid-cols-2">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="relative h-96 aspect-ratio-1 overflow-hidden shadow-md">
           <Image 
             src={product?.image}
@@ -25,7 +25,7 @@ const Details = ({product}) => {
           />
         </div>
 
-        <div className="flex flex-col justify-between">
+        <div className="flex flex-col justify-between px-4">
           <h1 className="text-3xl font-semibold text-[#5B20B6]">{product.name}</h1>
           <p className="text-gray-500 text-lg mt-4">{product.description}</p>
           

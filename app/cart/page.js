@@ -6,7 +6,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 
 const page = () => {
-  const stripePromise = loadStripe(apipublickey)
+  const stripePromise = loadStripe('')
 
   return (
     <div>
