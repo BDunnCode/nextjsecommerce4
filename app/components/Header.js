@@ -12,17 +12,17 @@ function Header() {
   const totalItems = useCartStore((state) => state.totalItems);
 
   return (
-    <div className="p-3 border-b-2 border-[#F5F3FF]">
+    <div className="px-3 border-b-2 border-[#F5F3FF]">
       <div className="max-w-7xl mx-auto flex justify-between">
         <Link href='/'>
           <div className="flex gap-2 items-center text-2xl lg:text-3xl font-bold">
             <Image 
-              src="/facelessmen.webp"
+              src="/logo.png"
               alt="logo"
-              height={50}
-              width={50}
+              height={90}
+              width={90}
             />
-            <h1 className="">Artistry Market</h1>
+            <h1 className="text-4xl">The Art Gallery</h1>
           </div>
         </Link>
         <div className="flex items-center relative">

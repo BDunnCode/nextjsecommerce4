@@ -1,7 +1,7 @@
 
 export const siteConfig = {
-  name: "Artistry Market",
-  description: "Art Shop",
+  name: "The Art Gallery",
+  description: "Artistic Decor Delivered",
   footer: [
     { name: "Home", href: "/" },
     { name: "About", href: "#" },

@@ -5,8 +5,9 @@ import { ClerkProvider } from "@clerk/nextjs";
 const josefin = Josefin_Sans({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Artistry Market",
-  description: "a shop that sells art",
+  title: "The Art Gallery",
+  description: "Artistic Decor Delivered",
+
 };
 
 export default function RootLayout({ children }) {
