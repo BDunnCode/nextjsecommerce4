@@ -13,7 +13,7 @@ function Header() {
 
   return (
     <div className="p-3 border-b-2 border-[#F5F3FF]">
-      <div className="max-w-6xl mx-auto flex justify-between">
+      <div className="max-w-7xl mx-auto flex justify-between">
         <Link href='/'>
           <div className="flex gap-2 items-center text-2xl lg:text-3xl font-bold">
             <Image 
