@@ -29,7 +29,7 @@ const Cart = () => {
       console.log('try is firing')
       if (!stripe || !cardElement) return null;
 
-      const data = await axios.post("/api/stripe", {
+      const data = await axios.post("api/stripe", {
         amount:cartTotal
       })
 
