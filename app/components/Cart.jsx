@@ -69,13 +69,16 @@ const Cart = () => {
               cart?.map(product => (
                 <tr key={product?._id} className="hover:bg-gray-50 text-center border-b text-[#5B20B6] border-gray-300" >
                   <td className="flex items-center py-2 px-4" >
-                    <Image 
+                    <Image
                       src={product?.image}
                       alt="img"
                       height={50}
                       width={50}
                       className="mr-2"
-                    />
+                      style={{
+                        maxWidth: "100%",
+                        height: "auto"
+                      }} />
                     {product.name}
                   </td>
                   <td className="py-2 px-4">${product?.price}</td>
@@ -105,7 +108,7 @@ const Cart = () => {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default Cart

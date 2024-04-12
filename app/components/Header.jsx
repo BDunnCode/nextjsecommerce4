@@ -16,12 +16,15 @@ function Header() {
       <div className="max-w-7xl mx-auto flex justify-between">
         <Link href='/'>
           <div className="flex gap-2 items-center text-2xl lg:text-3xl font-bold">
-            <Image 
+            <Image
               src="/logo.png"
               alt="logo"
               height={90}
               width={90}
-            />
+              style={{
+                maxWidth: "100%",
+                height: "auto"
+              }} />
             <h1 className="text-4xl">The Art Gallery</h1>
           </div>
         </Link>
@@ -45,7 +48,7 @@ function Header() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default Header

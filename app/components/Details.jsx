@@ -17,12 +17,14 @@ const Details = ({product}) => {
     <div className="max-w-6xl mx-auto mt-20">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="relative h-96 aspect-ratio-1 overflow-hidden shadow-md">
-          <Image 
+          <Image
             src={product?.image}
             alt="art"
-            objectFit="cover"
-            layout="fill"
-          />
+            fill
+            sizes="100vw"
+            style={{
+              objectFit: "cover"
+            }} />
         </div>
 
         <div className="flex flex-col justify-between px-4">
@@ -56,7 +58,7 @@ const Details = ({product}) => {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default Details

@@ -7,4 +7,4 @@ const AdminPage = () => {
   return <NextStudio config={sanityConfig} />
 }
 
-export default AdminPage
+export default AdminPage;

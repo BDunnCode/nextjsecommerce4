@@ -8,10 +8,10 @@ const Card = ({ product }) => {
         <div className="relative h-96 overflow-hidden aspect-square hover:scale-105 transition-transform duration-300">
             <Image
               src={product?.image}
-              layout="fill"
               alt="art"
-              objectFit="cover"
-            />
+              fill
+              sizes="100vw"
+              className="object-cover" />
         </div>
 
         <div className="p-4 space-y-2">
@@ -26,8 +26,7 @@ const Card = ({ product }) => {
         </div>
       </div>
     </Link>
-
-  )
+  );
 }
 
 export default Card
