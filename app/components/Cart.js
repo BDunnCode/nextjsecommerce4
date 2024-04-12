@@ -11,7 +11,8 @@ const Cart = () => {
   const totalItems = useCartStore(state => state.totalItems);
   const cartTotal = useCartStore(state => state.cartTotal);
 
-  
+  console.log('cart:', cart)
+  console.log('cartTotal:', cartTotal)
 
   const handleRemoveFromCart = (productId) => {
     removeFromCart(productId)
@@ -23,31 +24,31 @@ const Cart = () => {
   const onSubmit = async () => {
 
     const cardElement = elements?.getElement("card");
-    console.log(cardElement);
 
     try{
       console.log('try is firing')
       if (!stripe || !cardElement) return null;
 
       const data = await axios.post("api/stripe", {
-        amount:cartTotal
+        data: { amount: cartTotal.toFixed() }
       })
 
-      console.log(data)
       const res = await stripe?.confirmCardPayment(data?.data?.intent, {
         payment_method:{
           card:cardElement
-        }
+        } 
       })
 
-      const status = res?.paymentIntent?.status;
-      
-      console.log(status);
+      console.log('res:', res)
 
+      const status = res?.paymentIntent?.status;
+
+      console.log('status:', status)
+
+      
     } catch (error) {
       console.log(error)
     }
-
   }
  
   return (
